@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
+
+<title>Travel the Water Cycle</title>
+<link href="assets/css/font.css" rel="stylesheet"/>
+<link href="assets/css/template.css" rel="stylesheet"/>
+<link href="assets/css/actstyle.css" rel="stylesheet"/>
+<link href="assets/css/activity.css" rel="stylesheet"/>
+<link href="assets/scrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+
+
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/html2canvas_0.4.1.js"></script>
+<script src="assets/js/html2canvas.js"></script>
+<script src="assets/js/jquery.rotate.js"></script>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/slider.js"></script>
+<script src="assets/js/eventjs.js"></script>
+<script src="assets/js/activity.js"></script>
+<script src="assets/js/explore_mode.js"></script>
+
+<script src="assets/js/activity_mode.js"></script>
+<script src="assets/js/jquery.preload.js"></script>
+
+
+<!-- <script type="text/javascript" charset="utf-8" src="index_edgePreload.js"></script> -->
+
+<script>
+	$(function(){
+		var imgs = [
+		    'assets/images/template/info_icon.png',
+			'assets/images/template/close.png',
+			'assets/images/template/rslider.png',
+			'assets/images/template/audio_icon_normal.png',
+			'assets/images/template/audio_icon_play.png',
+			'assets/images/template/camera_icon.png',
+			'assets/images/template/camera_icon_disabled.png',
+			'assets/images/template/left_slider_act.png',
+			'assets/images/template/left_slider_deact.png',
+			'assets/images/help/audio_icon.png',
+		    'assets/images/template/lslider.png',
+			'assets/images/template/ok_btn.png',
+			'assets/images/template/ok_btn_active.png',
+			'assets/images/template/ok_btn_clkd.png',			
+			'assets/images/activity/bg.png',			
+			'assets/images/template/right_slider_act.png',
+			'assets/images/template/right_slider_deact.png',
+			'assets/images/help/camera_icon.png',
+			'assets/images/help/info_icon.png'
+		 ];		
+		$.preload(imgs, {
+		    each: function (count) {
+			
+				//console.log(imgs[count]);
+		    },
+		    all: function () {
+				$('.screenArea').css('visibility','visible');				
+			    $('.screenload').css('display','none');
+			    $('.preloaderImg').css('display','none');
+		    }
+		});
+	});
+</script>
+</head>
+
+<body>
+<div class="container">
+ 	<div class="header" >
+    	<span class="activity_title"></span>
+		<span class="infoIcon"></span>
+        <span id="rtxt_1" name="welcome" class="rtxt welcome">Welcome</span>
+        <span id="rtxt_2" name="explore" class="rtxt explore">Explore</span>
+        <span id="rtxt_3" name="activity" class="rtxt activity">Activity</span>
+    </div>
+	<img src="assets/edge/images/bg_blur.png" width="924px" height="588px" style="position: absolute;top:42px;z-index:0"/>
+	<div class="screenArea" audio-mode="off">
+		<div class="sliderContain"></div>	
+		<div class="EventNotAllowed"></div>
+		
+		<!-- Welcome Page -->
+		<div id="welcome" class="workArea">
+		<iframe src="assets/edge/index.html" id="myFrame" width="925" height="588" scroll="no" style="border:none"></iframe>
+			<div id="Stage" class="EDGE-1817669">
+			</div>				
+		</div>
+		<div class="bubbleDiv"></div>
+		
+		<!--Audio Div -->
+		
+		<div class="expDiv">		
+			<div class="headerDrag"><div>&equiv;</div></div>			
+			<div class="expChild">			
+				<!-- <div class="expimgcont" id="expimgcont" style="display: block;">
+					<img class='popupImages' width="180px" draggable="false" style="border-radius:12px;" src="assets/images/activity/test.png">
+				</div>  -->
+				<div class='audioTextDiv helpAudio'>
+					<div class='audioIconClass'>
+						<img src="assets/images/template/audio_icon_normal.png" alt="audioButton" class="expDivIcon expAudio" audio-state="pause" />
+					</div>
+					<p class="expPara" >
+						Test...
+					</p>
+				</div>
+			</div>
+			<div class="expFoodBar">
+				<!-- <div class="moveNextFood" data-attend="0"></div> -->
+				<div class="PreBtnSlider navSliderBtn" data-attend="0"></div>
+				<span style="width:42px"></span>
+				<div class="nxtBtnSlider navSliderBtn" data-attend="0"></div>
+			</div>
+			<img src="assets/images/template/lslider.png"  class="activeSlider" alt="Slide Animation" />
+		</div>
+		
+		<!--Explore Page -->
+		<div id="explore" class="workArea" data-class="explore">
+		<img class="exp_bg" id="exp_bg" height="557" alt="watercycle"  src="assets/images/activity/bg.png"/>
+		<!-- <canvas id="videocanvas" style="position:absolute;top: 34px;" width="924" height="524"></canvas> --> 	 
+	   <video width="924" height="554"  id="video">
+			<source src="assets/video/EXS_SE96071_6_VL_WC_R02_Snowmelt.mp4" type="video/mp4">
+	  </video>
+	  <div class="chheader1">Current Location</div>
+      <div class="cheader2">Next Location</div>
+      <div class="chheader3">Process</div>
+      
+      
+	   <div class="option1"> 
+	
+	  <span class="optiontext">Glacier</span></div>
+      <div class="option2"><!-- <div class="rightArr" id="rightArrow1"></div> --><span class="expnxtxt"></span></div>
+	  
+      <div class="option3">
+	  <!-- <div class="rightArr" id="rightArrow2"></div> -->
+	  <!-- <div class="drpdwntArrw" id="drpdwntArrw1"></div> -->
+	  <img class="drpdwntArrw" id="drpdwntArrw1" style="position: absolute;z-index: 10;    left: 275px;top: 13px;" src="assets/images/activity/pointer.png"/>
+         <div class="process">Select the appropriate process.</div>
+          
+		 <ul id="mySelect" class="mySelect"></ul>
+		 
+      </div> 
+	 <div class="popup_hide"></div> 
+	  <div class="popup" style="display: block;">
+    <img class="okBtn" src="assets/images/template/close.png">
+<img src="assets/images/template/audio_icon_normal.png" alt="audioButton1"  class="expDivIcon1 expAudio1 mCS_img_loaded" audio-state="pause" style="left: 14px;
+    top: 37px !important;    position: absolute;cursor:pointer">
+			 <!-- <div style="text-align:center;top:5px"><br/></div> -->
+			 <div style="position:relative;top:0px;width:314px;left:10px">Congratulations! You have traveled the entire water cycle. When you’re ready, select View My Progress to review your journey. If you like, you may continue traveling in Explore mode, or go to Activity mode for a guided activity. </div>
+		 
+			</div>
+	 <!--  <div class="animate"><div class="img_anim1"></div></div> -->
+	  <div class="track">View My Progress</div>	
+	  <div class="close_anim">Continue</div>	
+		<button class="play" style="width:50px">play</button>
+		<button class="actplay" style="width:50px">play</button>
+		</div>
+		<div class="pop_hide"></div>
+		 <div class="trackshow" id="trackshow">
+               <div class="track_title">My Progress</div>
+			   <img class="popupclose" id="popupclose" alt="popupclose" src="assets/images/template/close.png"/>
+               <div class="track_lable"></div>
+			   <img style="opacity:0.7" id="animarr" src="assets/images/activity/arrows_dot.png"/>
+            </div>
+		<!--Right Tab Menu -->
+		<div class="Modes">
+			<div class="rightGrpBtn">	
+				<div class="rightlabel1 labelRight labelArrow" id="rightlabel_1">Food Web</div>			
+				<div class="rightlabel2 labelRight" id="rightlabel_2">Trophic Levels</div>
+			</div>
+		</div>
+		
+		<!--Menu Tab  -->
+		<div class="highlightTab">
+			<div class="chheader1 button" bubble="monterey" id="ch1" data-show="1">Monterey Bay</div>
+			<div class="chheader2 button" bubble="amazon" id="ch2" data-show="2">Amazon Rain Forest</div>
+		</div>
+		
+		
+			<audio class="audioAnim" id="audioAnim">
+			<source src="assets/audio/sunny_day.mp3" type="audio/mpeg">
+			</audio>
+			
+			<audio class="actaudioAnim" id="actaudioAnim">
+			<source src="assets/audio/sunny_day.mp3" type="audio/mpeg">
+			</audio>
+
+			<audio class="audiocont" id="audiocont">
+			<source src="assets/audio/congrats.mp3" type="audio/mpeg">
+			</audio>			
+		<!--Activity Page -->
+		<div id="activity" class="workArea" data-class="activity" style="display:none">
+			 <div class="act_track">View My Progress</div>
+			  <div class="act_close_anim">Continue</div>	
+		     <img class="exp_bg" height="557" src="assets/images/activity/bg.png"/>
+			<video width="924" height="554"  id="act_video">
+			<source src="assets/video/EXS_SE96071_6_VL_WC_R02_Snowmelt.mp4" type="video/mp4">
+		   </video>	 
+				  <div class="chheader1" id="act_curr">Current Location</div>
+				  <div class="cheader2" id="act_nxt">Next Location</div>
+				  <div class="chheader3" id="act_proc">Process</div>
+				  
+				  <div class="highlight" id="acthighlight_1"></div>
+				   <div class="highlight" id="acthighlight_3"></div>
+				    <div class="highlight" id="acthighlight_5"></div>
+					<div class="highlight1" id="act_procss"></div>
+					<div class="highlight2" id="procss"></div>
+				  <div class="option1" id="act_opt1">
+				  <!-- <img class="act_info" id="act_info" src="assets/images/activity/yellow_arrow.png"/> -->
+				  <span class="option1text">Glacier</span>
+				  </div>
+				  <div class="option2" id="act_opt2"><!-- <div class="rightArr" id="act_rightArrow1"></div> --><span class="actpnxtxt"></span></div>
+				  <div class="option3" id="act_opt3">
+				  <!-- <div class="rightArr" id="act_rightArrow2"></div> -->
+				  <img class="drpdwntArrw" id="act_rightArrow2" style="position: absolute;z-index: 10;    left: 275px;top: 13px;" src="assets/images/activity/pointer.png"/>
+				  <div class="arrclik"></div>
+				 <div class="act_procss" id="act_procss">Select the appropriate process.</div>
+				  
+				 <ul id="act_mySelect" class="act_mySelect"></ul>
+				 
+			  </div>
+				
+				<!-- <div class="EventNotAllowed"></div> -->
+		</div>   
+		
+		<!--Help window -->
+		<div class="helpwindow">
+			<div class="helpinner">
+				<!-- <div class="helpBlockTopWhite" style="z-index: 9;height:10px;width:555px;position:absolute;background:white;top:153px"></div> -->
+			    <div class="help1" data-class="lclass">Background Information</div>
+				<div class="help2" data-class="rclass">Help</div>
+				<div class="helpBlock1">
+				
+				</div>
+				<div class="helpBlock2"></div>
+				<img src="assets/images/template/close.png" alt="closeButton" class="closeIcon"/>
+				<!-- <div class="helpBlockBotWhite" style="z-index: 9;height:10px;width:555px;position:absolute;background:white;bottom:105px"></div> -->
+			</div>
+		</div>		
+		
+    </div>
+	<img src="assets/images/template/camera_icon.png" alt="screenCapture" class="screenIcon" style=""/>	
+ 
+</div>
+</body>
+</html>
+
